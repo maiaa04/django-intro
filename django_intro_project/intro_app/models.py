@@ -9,7 +9,7 @@ def positive(value):
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, unique=True)
-    price = models.DecimalField(decimal_places=2, validators=[positive])
+    price = models.DecimalField(max_digits=5, decimal_places=2, validators=[positive])
     available = models.BooleanField(default=False)
 
     def __str__(self):
