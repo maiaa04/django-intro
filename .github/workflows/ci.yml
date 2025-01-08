@@ -30,7 +30,15 @@ jobs:
             source venv/bin/activate
             python django_intro_project/manage.py generateschema > docs.json
             # modiify the paths if necessary
+      - name: Check for changes in docs.json
+        run:
+          if git diff --exit-code django_intro_project/docs.json > /dev/null; then
+            echo "has_changes=false" >> $GITHUB_ENV
+          else
+            echo "has_changes=true" >> $GITHUB_ENV
+          fi
       - name: Commit and push documentation
+        if: env.has_changes == 'true'
         run: |
           git config --global user.mail "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
