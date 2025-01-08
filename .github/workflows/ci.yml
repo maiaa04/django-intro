@@ -17,7 +17,7 @@ docs:
     - name: Set up environment
       uses: actions/setup-python@v2
       with:
-        python-version: 3.12 # change to your Python version
+        python-version: 3.12.7 # change to your Python version
     - name: Install dependencies
       run: |
         python -m venv venv
@@ -27,7 +27,7 @@ docs:
     - name: Generate API documentation
       run: |
           source venv/bin/activate
-          python djangoproject/manage.py generateschema > docs.json
+          python django_intro_project/manage.py generateschema > docs.json
           # modiify the paths if necessary
     - name: Commit and push documentation
       run: |
