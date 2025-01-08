@@ -28,7 +28,7 @@ jobs:
       - name: Generate API documentation
         run: |
             source venv/bin/activate
-            python django_intro_project/manage.py generateschema > ../docs.json
+            python django_intro_project/manage.py generateschema --format openapi-json > ../docs.json
             # modiify the paths if necessary
       - name: Check for changes in docs.json
         run: |
