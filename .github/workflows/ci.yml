@@ -28,11 +28,11 @@ jobs:
       - name: Generate API documentation
         run: |
             source venv/bin/activate
-            python django_intro_project/manage.py generateschema > ../docs.yaml
+            python django_intro_project/manage.py generateschema > ../docs.json
             # modiify the paths if necessary
-      - name: Check for changes in docs.yaml
+      - name: Check for changes in docs.json
         run: |
-          if git diff --exit-code docs.yaml > /dev/null; then
+          if git diff --exit-code docs.json > /dev/null; then
             echo "has_changes=false" >> $GITHUB_ENV
           else
             echo "has_changes=true" >> $GITHUB_ENV
@@ -42,7 +42,7 @@ jobs:
         run: |
           git config --global user.mail "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git add docs.yaml index.html # modify the paths if necessary
+          git add docs.json index.html # modify the paths if necessary
           git commit -m "Updated documentation"
           git push origin main
         env:
