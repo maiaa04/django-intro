@@ -27,11 +27,6 @@ schema_view = get_schema_view(
     authentication_classes=[],
 )
 
-
-urlpatterns = [
-    path('hello/', hello_world, name='hello_world'),
-]
-
 urlpatterns = [
     path('api/', include(router.urls)),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
