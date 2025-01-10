@@ -7,6 +7,7 @@ from .models import Customer
 from .models import Order
 from rest_framework.permissions import IsAuthenticated
 from .permissions import IsAdminOrReadOnly
+from rest_framework.filters import SearchFilter
 
 
 # Create your views here.
@@ -21,6 +22,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
+    filter_backends = (SearchFilter,)
+    search_fields = ['name']
 
 class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
