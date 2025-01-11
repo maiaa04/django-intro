@@ -25,7 +25,6 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=(AllowAny,),
     authentication_classes=[],
-    url='/',
 )
 
 urlpatterns = [
